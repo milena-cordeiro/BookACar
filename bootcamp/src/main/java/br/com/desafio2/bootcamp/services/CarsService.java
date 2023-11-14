@@ -56,6 +56,12 @@ public class CarsService {
     }
 
     public void deleteCar(Integer carID) {
-        carsRepository.deleteById(carID);
+        CarEntity car = carsRepository.findById(carID)
+                .orElseThrow(() -> new EntityNotFoundException("Car not found"));
+        if(!car.getAvailable()) {
+            carsRepository.deleteById(carID);
+        } else  {
+            throw new EntityNotFoundException("It's not possible to delete this car");
+        }
     }
 }

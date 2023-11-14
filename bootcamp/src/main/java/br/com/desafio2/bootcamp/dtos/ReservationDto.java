@@ -1,7 +1,11 @@
 package br.com.desafio2.bootcamp.dtos;
 
-import java.sql.Date;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.sql.Date;
+@Getter
+@Setter
 public class ReservationDto {
     private Integer reservationID;
     private Date startDate;

@@ -1,5 +1,10 @@
 package br.com.desafio2.bootcamp.dtos;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class CarDto {
     private Integer carID;
     private String model;
