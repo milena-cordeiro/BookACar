@@ -42,12 +42,6 @@ public class CarsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedCar);
     }
 
-    @PutMapping("/{carId}")
-    public ResponseEntity<CarDto> editCar(@PathVariable Integer carId, @RequestBody CarDto carDto) {
-        CarDto updatedCar = carsService.updateCar(carId,carDto);
-        return ResponseEntity.ok(updatedCar);
-    }
-
     @DeleteMapping("/{carId}")
     public ResponseEntity<String> deleteCar(@PathVariable Integer carId) {
         try {

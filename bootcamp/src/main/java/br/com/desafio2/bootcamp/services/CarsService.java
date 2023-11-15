@@ -47,18 +47,6 @@ public class CarsService {
         return modelMapper.map(car, CarDto.class);
     }
 
-    public CarDto updateCar(Integer carId, CarDto car) {
-        CarEntity carToUpdate = carsRepository.findById(carId)
-                .orElseThrow(() -> new EntityNotFoundException("Car Not Found"));
-        carToUpdate.setModel(car.getModel());
-        carToUpdate.setColor(car.getColor());
-        carToUpdate.setBrand(car.getBrand());
-        carToUpdate.setYear(car.getYear());
-        CarEntity updatedCar = carsRepository.save(carToUpdate);
-
-        return modelMapper.map(updatedCar, CarDto.class);
-    }
-
     public void deleteCar(Integer carID) {
         CarEntity car = carsRepository.findById(carID)
                 .orElseThrow(() -> new EntityNotFoundException("Car not found"));

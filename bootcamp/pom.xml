@@ -57,6 +57,12 @@
 			<version>2.8.9</version> <!-- Verifique a versão mais recente no repositório Maven -->
 		</dependency>
 
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
