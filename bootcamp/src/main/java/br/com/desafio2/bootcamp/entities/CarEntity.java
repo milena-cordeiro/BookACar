@@ -34,6 +34,6 @@ public class CarEntity {
     @Column(name = "available")
     private Boolean available;
 
-    @OneToMany(mappedBy = "cars")
+    @OneToMany(mappedBy = "carId")
     private List<ReservationEntity> reservations;
 }

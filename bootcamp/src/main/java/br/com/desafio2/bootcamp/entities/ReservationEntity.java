@@ -1,5 +1,6 @@
 package br.com.desafio2.bootcamp.entities;
 
+import com.sun.jdi.IntegerValue;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,19 +17,19 @@ public class ReservationEntity {
     @Column(name = "reservationID")
     private Integer reservationID;
 
-    @Column(name = "startDate")
-    private Date startDate;
+    @Column(name = "start")
+    private Date start;
 
-    @Column(name = "endDate")
-    private Date endDate;
+    @Column(name = "end")
+    private Date end;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IDcar")
-    private CarEntity cars;
+    @ManyToOne
+    @JoinColumn(name = "carID")
+    private CarEntity carId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "IDclient")
-    private ClientEntity clients;
+    @ManyToOne
+    @JoinColumn(name = "clientID")
+    private ClientEntity clientId;
 
 
 }

@@ -22,6 +22,6 @@ public class ClientEntity {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "clients")
+    @OneToMany(mappedBy = "clientId")
     private List<ReservationEntity> reservations;
 }

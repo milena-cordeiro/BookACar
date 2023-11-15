@@ -2,6 +2,7 @@ package br.com.desafio2.bootcamp.controllers;
 
 import br.com.desafio2.bootcamp.dtos.CarDto;
 import br.com.desafio2.bootcamp.services.CarsService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,12 @@ public class CarsController {
         return ResponseEntity.ok(car);
     }
 
+    @GetMapping("/available")
+    public ResponseEntity<List<CarDto>> getByAvailable() {
+       List<CarDto> cars = carsService.listCarByAvailable();
+        return ResponseEntity.ok(cars);
+    }
+
     @PostMapping
     public ResponseEntity<CarDto> saveCar(@RequestBody CarDto carDto) {
         CarDto savedCar = carsService.saveCar(carDto);
@@ -41,9 +48,14 @@ public class CarsController {
         return ResponseEntity.ok(updatedCar);
     }
 
-    @DeleteMapping("/{carID}")
-    public ResponseEntity<Void> deleteCar(@PathVariable Integer carId) {
-        carsService.deleteCar(carId);
-        return ResponseEntity.noContent().build();
+    @DeleteMapping("/{carId}")
+    public ResponseEntity<String> deleteCar(@PathVariable Integer carId) {
+        try {
+            carsService.deleteCar(carId);
+            return ResponseEntity.noContent().build();
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.status(409).body("Este carro está reservado, e não é possivel deleta-lo");
+        }
+
     }
 }

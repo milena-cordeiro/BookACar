@@ -9,7 +9,7 @@ public class CarDto {
     private Integer carID;
     private String model;
     private String brand;
-
+    private String color;
     private Integer year;
 
     private String plate;

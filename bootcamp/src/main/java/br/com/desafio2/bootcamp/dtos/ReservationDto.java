@@ -1,5 +1,6 @@
 package br.com.desafio2.bootcamp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,11 +9,12 @@ import java.sql.Date;
 @Setter
 public class ReservationDto {
     private Integer reservationID;
-    private Date startDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date start;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Date end;
 
-    private Date endDate;
+    private Integer carId;
 
-    private CarDto cars;
-
-    private  ClientDto clients;
+    private  Integer clientId;
 }

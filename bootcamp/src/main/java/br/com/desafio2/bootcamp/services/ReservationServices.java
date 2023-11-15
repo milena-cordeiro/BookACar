@@ -7,6 +7,7 @@ import br.com.desafio2.bootcamp.repositories.CarsRepository;
 import br.com.desafio2.bootcamp.repositories.ClientsRepository;
 import br.com.desafio2.bootcamp.repositories.ReservationsRepository;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,9 +36,10 @@ public class ReservationServices {
                 .collect(Collectors.toList());
     }
 
+//    @Transactional
     public ReservationDto saveReservation(ReservationDto reservationDto) {
-        Integer carId = reservationDto.getCars().getCarID();
-        Integer clientId = reservationDto.getClients().getClientID();
+        Integer carId = reservationDto.getCarId();
+        Integer clientId = reservationDto.getClientId();
 
         if (!carsRepository.existsById(carId) || !clientsRepository.existsById(clientId)) {
             throw new EntityNotFoundException("Carro ou cliente não encontrado ao salvar a reserva");
@@ -46,15 +48,16 @@ public class ReservationServices {
         ReservationEntity reservation = modelMapper.map(reservationDto, ReservationEntity.class);
 
         CarEntity car = carsRepository.findById(carId)
+                .filter(CarEntity::getAvailable)
                 .orElseThrow(() -> new EntityNotFoundException("Car not found"));
-        car.setAvailable(false);
 
         if (!car.getAvailable()) {
             throw new EntityNotFoundException("Car is not available for reservation");
         }
 
+        car.setAvailable(false);
+
         reservation = reservationRepository.save(reservation);
-        carsRepository.save(car);
 
         return modelMapper.map(reservation, ReservationDto.class);
     }
