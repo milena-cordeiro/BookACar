@@ -6,22 +6,13 @@ No momento está em modo de desenvolvimento, e o uso é feito localmente, portan
 
 ## Rodando localmente
 
-Clone o projeto e entre no diretório do projeto
-```bash
-
-git clone git@github.com:milena-cordeiro/BookACar.git
-
-cd BookACar
-cd bootcamp
-
-```
 Instale as dependencias do projeto com o [maven](https://www.marcobehler.com/guides/mvn-clean-install-a-short-guide-to-maven):
 ```bash
 
 mvn clean install 
 
 ```
-Obs: é necessário fazer a instalação do mvn, mas se você estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
+Obs: é necessário fazer a [instalação do mvn](https://www.hostinger.com.br/tutoriais/install-maven-ubuntu), mas se você estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
 
 Inicie o servidor:
 > Antes de iniciar o servidor realize o setup do banco de dados logo a baixo .
@@ -60,6 +51,11 @@ Entre no [MySQL Workbench](https://www.mysql.com/products/workbench/) ou a ferra
 </details>
 
 # Documentação da API
+## Documentação em Swagger UI
+Após rodar a API você pode acessá-la no Swagger IU através dessa URL: http://localhost:8080/api/swagger-ui/index.html
+assim será possivel visualizar e testar o funcionamento de cada endpoint. 
+Abaixo uma breve descrição:
+
 Em http://localhost:8080/api/status a mensagem "Server in running", indicando que a API está online.
 ## Gestão de clientes
 * Retorna todos os clientes que estão cadastrados:
