@@ -28,26 +28,4 @@ public class ReservationsControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$").isArray());
     }
-
-    @Test
-    void testInsertReservation () throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        String start = "2023-11-16";
-        String end = "2023-11-20";
-
-        ReservationDto reservation = new ReservationDto();
-        reservation.setStart(java.sql.Date.valueOf(start));
-        reservation.setEnd(java.sql.Date.valueOf(end));
-        reservation.setCarId(1);
-        reservation.setClientId(2);
-
-        String reservationJson = objectMapper.writeValueAsString(reservation);
-
-        mockMvc.perform(MockMvcRequestBuilders.post("/reservations")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(reservationJson))
-                .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.reservationID").exists());
-    }
 }

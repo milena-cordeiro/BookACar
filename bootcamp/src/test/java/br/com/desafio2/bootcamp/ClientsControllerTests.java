@@ -38,6 +38,6 @@ public class ClientsControllerTests {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(clientJson))
                 .andExpect(MockMvcResultMatchers.status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.carID").exists());
+                .andExpect(MockMvcResultMatchers.jsonPath("$.clientID").exists());
     }
 }
