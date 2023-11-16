@@ -3,23 +3,7 @@
 Está é uma API em Java (versão 17 ) com Spring Boot e MySQL.
 Com ela é possível fazer cadastro de clientes, veículos e reservas.
 No momento está em modo de desenvolvimento, e o uso é feito localmente, portando aqui será descrito o funcionamento.
-
-## Rodando localmente
-
-Instale as dependencias do projeto com o [maven](https://www.marcobehler.com/guides/mvn-clean-install-a-short-guide-to-maven):
-```bash
-
-mvn clean install 
-
-```
-Obs: é necessário fazer a [instalação do mvn](https://www.hostinger.com.br/tutoriais/install-maven-ubuntu), mas se você estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
-
-Inicie o servidor:
-> Antes de iniciar o servidor realize o setup do banco de dados logo a baixo .
-```bash
-mvn clean spring-boot:run
-```
-Obs: se estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
+> Fazer o setup do banco de dados book_a_car antes de inicialiar API
 
 ## Setup do banco de dados
 O banco foi estruturado pelo seguinte [Diagrama de Entidade-Relacionamento (DER).](https://lucid.app/documents/embedded/9c518b34-27a9-442e-bda1-5dee810f5a7e?invitationId=inv_5df06cd9-dab9-4c2f-bdfb-0409ce491f49#)
@@ -47,8 +31,24 @@ Entre no [MySQL Workbench](https://www.mysql.com/products/workbench/) ou a ferra
 3. Após essa configuração você pode rodar os scritps do banco de dados no [Workbench](https://dev.mysql.com/doc/workbench/en/wb-sql-editor.html), que estão no diretório resourses do projeto, na pasta dataBase: BookACar/bootcamp/src/main/resources/dataBase
 
 4. Com o server rodando e o banco pronto, podemos subir a aplicação. Caso não consiga rodar os scripts, crie um banco com o nome book_a_car, com isso ao subir a API ela se conectará a esse banco e criará as tabelas vazias.
-
 </details>
+
+## Rodando localmente
+
+Instale as dependencias do projeto com o [maven](https://www.marcobehler.com/guides/mvn-clean-install-a-short-guide-to-maven):
+```bash
+
+mvn clean install 
+
+```
+Obs: é necessário fazer a [instalação do mvn](https://www.hostinger.com.br/tutoriais/install-maven-ubuntu), mas se você estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
+
+Inicie o servidor:
+> Antes de iniciar o servidor realize o setup do banco de dados logo a baixo .
+```bash
+mvn clean spring-boot:run
+```
+Obs: se estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
 
 # Documentação da API
 ## Documentação em Swagger UI
