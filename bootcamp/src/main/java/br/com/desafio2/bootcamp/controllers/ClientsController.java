@@ -33,4 +33,10 @@ public class ClientsController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }
+
+    @GetMapping("/{clientId}")
+    public ResponseEntity<ClientDto> findById(@PathVariable Integer clientId) {
+        ClientDto client = clientsService.getById(clientId);
+        return ResponseEntity.ok(client);
+    }
 }

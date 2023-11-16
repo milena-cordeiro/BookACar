@@ -1,8 +1,11 @@
 package br.com.desafio2.bootcamp.services;
 
+import br.com.desafio2.bootcamp.dtos.CarDto;
 import br.com.desafio2.bootcamp.dtos.ClientDto;
+import br.com.desafio2.bootcamp.entities.CarEntity;
 import br.com.desafio2.bootcamp.entities.ClientEntity;
 import br.com.desafio2.bootcamp.repositories.ClientsRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +34,12 @@ public class ClientsService {
         client = clientRepository.save(client);
         return modelMapper.map(client, ClientDto.class);
 
+    }
+
+    public ClientDto getById(Integer clientId) {
+        ClientEntity client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new EntityNotFoundException("Client not found!"));
+
+        return modelMapper.map(client, ClientDto.class);
     }
 }
