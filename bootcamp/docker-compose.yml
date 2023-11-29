@@ -8,6 +8,10 @@ services:
       - 8080:8080
     depends_on:
       - mysqldb
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/book_a_car
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 123
   mysqldb:
    platform: linux/x86_64
    image: "mysql:8.0"
@@ -16,6 +20,4 @@ services:
      - 3306:3306
    environment:
      MYSQL_DATABASE: book_a_car
-     MYSQL_USER: root
-     MYSQL_PASSWORD: 123
      MYSQL_ROOT_PASSWORD: 123
