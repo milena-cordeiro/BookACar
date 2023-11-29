@@ -44,7 +44,7 @@ mvn clean install
 Obs: é necessário fazer a [instalação do mvn](https://www.hostinger.com.br/tutoriais/install-maven-ubuntu), mas se você estiver usando a IDE [IntelliJ](https://www.jetbrains.com/help/idea/getting-started.html) é só digitar o comando no terminal que ele vai sugerir apertar as teclas ctrl + Enter.
 
 Inicie o servidor:
-> Antes de iniciar o servidor realize o setup do banco de dados logo a baixo .
+> Antes de iniciar o servidor realize o setup do banco de dados.
 ```bash
 mvn clean spring-boot:run
 ```
